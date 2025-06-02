@@ -1,0 +1,21 @@
+.recommendation{
+    margin-top: 30px;
+overflow: auto;
+}
+
+.rightTitle{
+    font-weight: 600;
+    font-size: 22px;
+    font-family: cursive;
+    color: blue;
+    margin-bottom: 15px !important;
+    display: block; /* Ensure margin-bottom works */
+   
+}
+
+.rightImg{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    
+}
