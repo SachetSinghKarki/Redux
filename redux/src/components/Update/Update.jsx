@@ -1,17 +1,38 @@
 import React, { useState } from "react";
 import "./Update.css";
 import Warning from "../Warning/Warning";
+import { useDispatch, useSelector } from "react-redux";
+import { remove, update, greetings } from "../../redux/userSlice";
 
 const Update = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+
+  const user = useSelector((state)=>state.user)
+  const dispatch = useDispatch()
+
+
+  const handleUpdate = (e)=>{
+
+    e.preventDefault()
+    dispatch(
+      greetings({name,email})
+    )
+  }
+
+  const handleRemove=(e)=>{
+    e.preventDefault()
+    dispatch(
+      remove()
+    )
+  }
 
   return (
     <div className="update">
       <div className="updateWrapper">
         <h3>Update your profile</h3>
         <Warning />
-        <button className="delete">Delete Account</button>
+        <button className="delete" onClick={handleRemove}>Delete Account</button>
         <div className="updateContainer">
           <form>
             <div className="formItem">
@@ -27,7 +48,12 @@ const Update = () => {
             </div>
             <div className="formItem">
               <label>Username</label>
-              <input type="text" className="formInput" placeholder="sinchan" />
+              <input
+                type="text"
+                className="formInput"
+                placeholder={user.name? user.name :"guest"}
+                onChange={(e) => setName(e.target.value)}
+              />
             </div>
 
             <div className="formItem">
@@ -35,7 +61,8 @@ const Update = () => {
               <input
                 type="email"
                 className="formInput"
-                placeholder="sinchan@gmail.com"
+                placeholder ={user.email? user.email :"guest@email.com"}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -44,7 +71,7 @@ const Update = () => {
               <input className="formInput" type="password" />
             </div>
 
-            <button className="updateButton">Update</button>
+            <button className="updateButton" onClick={handleUpdate}>Update</button>
           </form>
         </div>
       </div>

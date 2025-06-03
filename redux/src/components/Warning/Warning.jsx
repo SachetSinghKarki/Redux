@@ -1,10 +1,13 @@
 import React from 'react'
 import './Warning.css'
+import { useSelector } from 'react-redux'
 
 const Warning = () => {
+  const name = useSelector((state)=>state.user.name)
+
   return (
     <div className="warning">
-           Deleting account cannot be undone <b>Sinchan</b>! You should confirm your
+           Deleting account cannot be undone <b>{name? name :'guest'}</b>! You should confirm your
            password to delete your account.
     </div>
   )

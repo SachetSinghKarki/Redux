@@ -1,8 +1,13 @@
 import React from "react";
 import ArrowDropDown from '@mui/icons-material/ArrowDropDown';
 import "./Navbar.css";
+import { useSelector } from "react-redux";
+
 
 const Navbar = () => {
+
+  const name = useSelector((state)=>state.user.name)
+
   return (
     <div className="navbar">
       <div className="navbarWrapper">
@@ -30,7 +35,7 @@ const Navbar = () => {
             className="avatar"
           />
 
-          <span className="navbarName">Sinchan</span>
+          <span className="navbarName">{name? name : "guest"}</span>
           <ArrowDropDown/>
         </div>
       </div>
