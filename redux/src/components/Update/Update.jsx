@@ -2,29 +2,29 @@ import React, { useState } from "react";
 import "./Update.css";
 import Warning from "../Warning/Warning";
 import { useDispatch, useSelector } from "react-redux";
-import { remove, update, greetings } from "../../redux/userSlice";
+// import { remove } from "../../redux/userSlice";
+import { updateUser } from "../../redux/apicalls";
 
 const Update = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-  const user = useSelector((state)=>state.user)
+  const user = useSelector((state)=>state.user.userInfo)
   const dispatch = useDispatch()
 
+ 
 
   const handleUpdate = (e)=>{
 
     e.preventDefault()
-    dispatch(
-      greetings({name,email})
-    )
+   updateUser({name, email},dispatch )
   }
 
   const handleRemove=(e)=>{
     e.preventDefault()
-    dispatch(
-      remove()
-    )
+    // dispatch(
+    //   remove()
+    // )
   }
 
   return (
@@ -51,7 +51,7 @@ const Update = () => {
               <input
                 type="text"
                 className="formInput"
-                placeholder={user.name? user.name :"guest"}
+                placeholder={user.name? user.name :"?"}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>

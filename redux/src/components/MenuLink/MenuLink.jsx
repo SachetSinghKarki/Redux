@@ -3,7 +3,7 @@ import "./MenuLink.css";
 import { useSelector } from "react-redux";
 
 const MenuLink = ({ icon, text }) => {
-  const name = useSelector((state) => state.user.name);
+  const name = useSelector((state) => state.user.userInfo.name);
 
   return (
     <div className="menuLink">
@@ -11,7 +11,7 @@ const MenuLink = ({ icon, text }) => {
       <span className="menuLinkText">{text}</span>
       {text === "Logout" && (
         <span className="menuLinkTextName">
-          {text === "Logout" && name ? name : "guest"}
+          {text === "Logout" && name ? name : "?"}
         </span>
       )}
     </div>

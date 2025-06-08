@@ -6,7 +6,8 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
 
-  const name = useSelector((state)=>state.user.name)
+  const name = useSelector((state)=>state.user.userInfo.name)
+  console.log(name)
 
   return (
     <div className="navbar">
@@ -35,7 +36,7 @@ const Navbar = () => {
             className="avatar"
           />
 
-          <span className="navbarName">{name? name : "guest"}</span>
+          <span className="navbarName">{name? name : "?"}</span>
           <ArrowDropDown/>
         </div>
       </div>
